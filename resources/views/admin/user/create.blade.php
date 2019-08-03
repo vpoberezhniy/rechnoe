@@ -25,9 +25,9 @@
             </div>
         @endif
             @if(!$user->name)
-                {!! Form::model($user, ['route' => ['users.store'], 'class'=>'form-horizontal'  ]) !!}
+                {!! Form::model($user, ['route' => ['user.store'], 'class'=>'form-horizontal'  ]) !!}
             @else
-                {!! Form::model($user, ['route' => ['users.update', $user->id], 'method'=>'PUT', 'class'=>'form-horizontal'  ]) !!}
+                {!! Form::model($user, ['route' => ['user.update', $user->id], 'method'=>'PUT', 'class'=>'form-horizontal'  ]) !!}
             @endif
         <div class="form-group">
             {!! Form::label('name', 'User Name:', ['class'=>'control-label col-sm-3']); !!}

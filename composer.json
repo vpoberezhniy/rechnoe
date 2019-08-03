@@ -6,6 +6,9 @@
     "type": "project",
     "require": {
         "php": ">=5.6.4",
+        "illuminate/html": "^5.0",
+        "jeroennoten/laravel-adminlte": "^1.25",
+        "kris/laravel-form-builder": "^1.20",
         "laravel/framework": "5.3.*"
     },
     "require-dev": {

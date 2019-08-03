@@ -8,7 +8,7 @@
 @stop
 
 @section('content')
-    <a href="{{url('/admin/users/create')}}"><button class="btn btn-info">Create New User</button></a><br><br>
+    <a href="{{url('/admin/user/create')}}"><button class="btn btn-info">Создать нового пользователя</button></a><br><br>
 
     <table id="user" class="display table">
         <thead>
@@ -21,14 +21,14 @@
         </tr>
         </thead>
         <tbody>
-            @foreach($users as $user)
+            @foreach($user as $value)
 
         <tr>
             <td>{{$loop->iteration}}</td>
-            <td>{{ $user->name }}</td>
-            <td>{{ $user->email }}</td>
-            <td><a href="{{url('/admin/users/' . $user->id . '/edit')}}" ><buttor class="btn btn-info">Edit</buttor></a>
-                {!!Form::open(['url'=>'admin/users/'.$user->id,'method'=>'DELETE', 'style'=>'display:inline'])!!}
+            <td>{{ $value->name }}</td>
+            <td>{{ $value->email }}</td>
+            <td><a href="{{url('/admin/user/' . $value->id . '/edit')}}" ><button class="btn btn-info">Edit</button></a>
+                {!!Form::open(['url'=>'admin/user/'.$value->id,'method'=>'DELETE', 'style'=>'display:inline'])!!}
                 {!!Form::submit('Delete', ['class'=>'btn btn-danger'])  !!}
                 {!!Form::close()!!}
             </td>
