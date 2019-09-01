@@ -10,9 +10,10 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+
 Route::get('/home', 'HomeController@index');
+Route::get('/prtcl', 'PrtclController@index');
 Auth::routes();
-//Route::resource('admin/doc/protocol', 'admin\ProtocolController@index');
 
 Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => ['auth', 'role']],
     function(){
@@ -22,6 +23,7 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => ['aut
     });
 
 Route::get('/', function(){  return view('home'); });
+
 
 
 

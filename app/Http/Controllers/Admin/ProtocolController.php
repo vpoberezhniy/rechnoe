@@ -1,10 +1,11 @@
 <?php
 
-namespace App\Http\Controllers\admin;
+namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Protocol;
+use App\House;
 
 class ProtocolController extends Controller
 {
@@ -27,7 +28,9 @@ class ProtocolController extends Controller
     public function create()
     {
         $prtcl = new Protocol;
-        return view('admin.protocol.create', compact('prtcl'));
+        $houses = House::all()->pluck('name', 'id')->toArray();
+//        dd($houses);
+        return view('admin.protocol.create', compact('prtcl', 'houses'));
     }
 
     /**
@@ -41,7 +44,7 @@ class ProtocolController extends Controller
         $this->validate($request, [
             'n_protocol' => 'required|max:255',
             'theme' => 'required|max:255',
-            'house_number' => 'required|min:2|max:3',
+//            'house_number' => 'required|min:2|max:10',
             'description' => 'required|max:255',
         ]);
 
@@ -57,8 +60,9 @@ class ProtocolController extends Controller
            $fName = $file->getClientOriginalName();
 //            $fName = date('Y-m-d-H:i:s')."-". $file->getClientOriginalName();
            $file->move(public_path().'/documents', $fName);
-           $prtcl->file = $fName;
+           $prtcl->file = '/documents/' . $fName;
         }
+//        dd($prtcl);
         $prtcl->save();
         return redirect('/admin/protocol');
     }
@@ -71,7 +75,8 @@ class ProtocolController extends Controller
      */
     public function show($id)
     {
-        //
+//        $prtcl = House::find($id);
+//        return view('admin.protocol.index', compact('prtcl'));
     }
 
     /**
@@ -83,7 +88,8 @@ class ProtocolController extends Controller
     public function edit($id)
     {
         $prtcl = Protocol::find($id);
-        return view('admin.protocol.create', compact('prtcl'));
+        $houses = House::all()->pluck('name', 'id')->toArray();
+        return view('admin.protocol.create', compact('prtcl', 'houses'));
     }
 
     /**
@@ -98,7 +104,7 @@ class ProtocolController extends Controller
         $this->validate($request, [
             'n_protocol' => 'required|max:255',
             'theme' => 'required|max:255',
-            'house_number' => 'required|min:2|max:3',
+//            'house_number' => 'required|min:2|max:10',
             'description' => 'required|max:255',
         ]);
 
@@ -108,13 +114,13 @@ class ProtocolController extends Controller
         $prtcl->house_number = $request->house_number;
         $prtcl->description = $request->description;
 
-//        if($request->file)
-//        {
-//            $file = $request->file;
-//            $fName = $file->getClientOriginalName();
-//            $file->move(public_path().'/documents', $fName);
-//            $prtcl->file = $fName;
-//        }
+        if($request->file)
+        {
+            $file = $request->file;
+            $fName = $file->getClientOriginalName();
+            $file->move(public_path().'/documents', $fName);
+            $prtcl->file = '/documents/' . $fName;
+        }
         $prtcl->save();
         return redirect('/admin/protocol');
     }

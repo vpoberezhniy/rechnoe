@@ -24,11 +24,11 @@
             <td>{{$loop->iteration}}</td>
             <td>{{ $value->n_protocol }}</td>
             <td>{{ $value->theme }}</td>
-            <td>{{ $value->house_number }}</td>
+            <td>{{ $value->house->name }}</td>
             <td>{{ $value->description }}</td>
             <td>{{ $value->file }}</td>
             <td><a href="{{url('/admin/protocol/' . $value->id . '/edit')}}" ><button class="btn btn-info">Edit</button></a>
-                {!!Form::open(['url'=>'admin/protocol/'.$value->id,'method'=>'DELETE', 'style'=>'display:inline'])!!}
+                {!!Form::open(['url'=>'prtcl'.$value->id,'method'=>'DELETE', 'style'=>'display:inline'])!!}
                 {!!Form::submit('Delete', ['class'=>'btn btn-danger'])  !!}
                 {!!Form::close()!!}
             </td>

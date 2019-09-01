@@ -19,6 +19,19 @@
             'csrfToken' => csrf_token(),
         ]); ?>
     </script>
+
+    {{--<script> src="{{ asset('js/adminlte.js')}}"</script>--}}
+
+        {{--<script src="{{ asset('js/app.js') }}"></script>--}}
+        {{--<script src="{{ asset('js/script.js') }}"></script>--}}
+        {{--<script src="{{ url('/js/dropzone.js') }}"></script>--}}
+        {{--<script src="{{ url('/js/dropzone-config.js') }}"></script>--}}
+        {{--@stack('js')--}}
+        {{--@yield('js')--}}
+
+
+
+
 </head>
 <body>
     <div id="app">
@@ -46,7 +59,7 @@
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">Документы ОСББ <span class="caret"></span></a>
                             <ul class="dropdown-menu">
-                                <li><a href="#">Протоколы правления</a></li>
+                                <li><a href="{{ url('/prtcl') }}">Протоколы правления</a></li>
                                 <li><a href="#">Листы голосования</a></li>
                                 <li><a href="#">Отчеты ревизионной комиссии</a></li>
                                 {{--<li><a href="#">Ссылка</a></li>--}}

@@ -26,7 +26,7 @@
         @if(!$prtcl->n_protocol)
             {!! Form::model($prtcl, ['route' => ['protocol.store'], 'files' => true, 'class'=>'form-horizontal'  ]) !!}
         @else
-            {!! Form::model($prtcl, ['route' => ['protocol.update', $prtcl->id], 'method'=>'PUT', 'class'=>'form-horizontal'  ]) !!}
+            {!! Form::model($prtcl, ['route' => ['protocol.update', $prtcl->id], 'files' => true, 'method'=>'PUT', 'class'=>'form-horizontal'  ]) !!}
         @endif
         <div class="form-group">
             {!! Form::label('n_protocol', '№ Протокола:', ['class'=>'control-label col-sm-3']); !!}
@@ -41,10 +41,10 @@
             </div>
         </div>
             <div class="form-group">
-            {!! Form::label('house_number', '№ Дома:', ['class'=>'control-label col-sm-3']); !!}
-            <div class="col-sm-9">
-            {!! Form::text('house_number', $prtcl->house_number, null, ['class'=>'form-control', 'multiple'=>true]) !!}
-            </div>
+                {!! Form::label('role', 'house_number:', ['class'=>'control-label col-sm-3']); !!}
+                <div class="col-sm-9">
+                    {!! Form::select('house_number', $houses, ['class'=>'form-control', 'multiple'=>true]) !!}
+                </div>
             </div>
             <div class="form-group">
                 {!! Form::label('description', 'Описание протокола:', ['class'=>'control-label col-sm-3']); !!}
@@ -56,7 +56,7 @@
                 {!! Form::label('file', 'Load file:', ['class'=>'control-label col-sm-3']); !!}
                 <div class="col-sm-9">
                     {!! Form::file('file', null, ['class'=>'form-control']) !!}
-                    {!! Form::text('file', $prtcl->file, null) !!}
+                    {!! Form::text('file', $prtcl->file, null, ['class'=>'control-label col-sm-3']); !!}
                 </div>
             </div>
         <div class="form-group">

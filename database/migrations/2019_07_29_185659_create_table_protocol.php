@@ -17,7 +17,9 @@ class CreateTableProtocol extends Migration
             $table->increments('id')->unsigned();
             $table->string('n_protocol', 50);
             $table->string('theme', 250);
-            $table->string('house_number');
+            $table->integer('house_number')->unsigned();
+            $table->foreign('house_number')->references('id')->on('houses');
+//            $table->string('house_number');
             $table->longText('description');
             $table->string('file', 100);
             $table->timestamps();
